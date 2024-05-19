@@ -15,13 +15,3 @@ public class Application {
 	}
 
 }
-
-@RestController
-@RequestMapping("/hello")
-class HelloRestController {
-
-	@GetMapping
-	public ResponseEntity<String> sayHello() {
-		return ResponseEntity.ok("Hello buddy!");
-	}
-}
