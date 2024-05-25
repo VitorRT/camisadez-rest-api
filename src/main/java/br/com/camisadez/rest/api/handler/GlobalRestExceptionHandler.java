@@ -14,6 +14,7 @@ import br.com.camisadez.rest.api.utils.ExceptionUtils;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -34,6 +35,18 @@ public class GlobalRestExceptionHandler {
      * */
     @ExceptionHandler({EntityNotFoundException.class})
     public ResponseEntity<ErrorResponse> entityNotFoundException(EntityNotFoundException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ExceptionUtils.getErrorResponse(e.getMessage(), ErrorType.BAD_REQUEST));
+    }
+
+    /**
+     * Tratamento de exeção <code>MethodArgumentNotValidException</code>.
+     * Essa exeção é lançada em validações inválidas.
+     *
+     * @param e
+     * @return
+     */
+    @ExceptionHandler({MethodArgumentNotValidException.class})
+    public ResponseEntity<ErrorResponse> methodArgumentNotValidException(MethodArgumentNotValidException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ExceptionUtils.getErrorResponse(e.getMessage(), ErrorType.BAD_REQUEST));
     }
 }
