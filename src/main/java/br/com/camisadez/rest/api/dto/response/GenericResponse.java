@@ -8,6 +8,6 @@ public class GenericResponse {
     Object data;
 
     public GenericResponse() {
-        this.metaType = 1;
+        this.metaType = 0;
     }
 }
