@@ -33,7 +33,7 @@ public class ExceptionUtils {
         error.setType(errorType.getType());
 
         response.setMessage(message);
-        response.setMetaType(0);
+        response.setMetaType(1);
         response.setError(error);
 
         return response;

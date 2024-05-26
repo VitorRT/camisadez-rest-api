@@ -33,7 +33,7 @@ public class TemplateService {
     private TemplateRepository templateRepository;
 
     /**
-     * Construtor da classe <code>TemplateService</code> para injeção de depedência.
+     * Construtor da classe <code>TemplateService</code> para injeção de dependência.
      * */
     public TemplateService(TemplateRepository templateRepository) {
         this.templateRepository = templateRepository;
@@ -81,8 +81,8 @@ public class TemplateService {
      * @param createdBy
      * @returns templates
      * */
-    public List<TemplateSimpleResponse> getAllMineTemplates(String createdBy) {
-        return templateRepository.getAllMineTemplates(createdBy).stream().map(TemplateSimpleResponse::new).toList();
+    public List<TemplateSimpleResponse> getAllMyTemplates(String createdBy) {
+        return templateRepository.getAllMyTemplates(createdBy).stream().map(TemplateSimpleResponse::new).toList();
     }
 
     /**
@@ -90,7 +90,7 @@ public class TemplateService {
      * @param id
      * @returns template
      * */
-    public TemplateFullResponse getOneTemplate(UUID id) {
+    public TemplateFullResponse getMyTemplate(UUID id) {
         TemplateEntity templateFounded = getTemplateById(id);
         return new TemplateFullResponse(templateFounded);
     }
@@ -100,7 +100,7 @@ public class TemplateService {
      * @param id
      * @returns template
      * */
-    public void deleteOneTemplate(UUID id) {
+    public void doDeleteMyTemplate(UUID id) {
         TemplateEntity templateFounded = getTemplateById(id);
         templateRepository.delete(templateFounded);
     }
