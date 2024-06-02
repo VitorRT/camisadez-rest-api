@@ -28,6 +28,6 @@ public interface TemplateRepository extends JpaRepository<TemplateEntity, UUID> 
     @Query("SELECT T FROM TemplateEntity T WHERE T.createdBy = :createdBy")
     List<TemplateEntity> getAllMyTemplates(@Param("createdBy") String id);
 
-    @Query("SELECT T FROM TemplateEntity T INNER JOIN TaskEntity Ts ON Ts.templateParent.id = T.id WHERE Ts.id = :taskId")
-    Optional<TemplateEntity> getTemplateByTaskId(@Param("taskId") UUID taskId);
+    @Query("SELECT T FROM TemplateEntity T INNER JOIN DayEntity Ts ON Ts.templateParent.id = T.id WHERE Ts.id = :dayId")
+    Optional<TemplateEntity> getTemplateByDayId(@Param("dayId") UUID dayId);
 }

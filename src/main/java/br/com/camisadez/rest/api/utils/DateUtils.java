@@ -57,4 +57,9 @@ public class DateUtils {
             return "agora";
         }
     }
+
+    public static boolean isPastDate(LocalDate date) {
+        LocalDate today = LocalDate.now();
+        return date.isBefore(today);
+    }
 }

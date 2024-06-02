@@ -10,6 +10,7 @@ package br.com.camisadez.rest.api.handler;
 
 import br.com.camisadez.rest.api.constants.ErrorType;
 import br.com.camisadez.rest.api.dto.exception.ErrorResponse;
+import br.com.camisadez.rest.api.exception.ActionNotPermittedException;
 import br.com.camisadez.rest.api.exception.IncorrectlyFormattedDateException;
 import br.com.camisadez.rest.api.utils.ExceptionUtils;
 import jakarta.persistence.EntityNotFoundException;
@@ -60,6 +61,18 @@ public class GlobalRestExceptionHandler {
      */
     @ExceptionHandler({IncorrectlyFormattedDateException.class})
     public ResponseEntity<ErrorResponse> incorrectlyFormattedDateException(IncorrectlyFormattedDateException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ExceptionUtils.getErrorResponse(e.getMessage(), ErrorType.BAD_REQUEST));
+    }
+
+    /**
+     * Tratamento de exeção <code>{@link ActionNotPermittedException}</code>.
+     * Essa exeção é lançada quando uma ção não é permitida no sistema.
+     *
+     * @param e
+     * @return
+     */
+    @ExceptionHandler({ActionNotPermittedException.class})
+    public ResponseEntity<ErrorResponse> actionNotPermittedException(ActionNotPermittedException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ExceptionUtils.getErrorResponse(e.getMessage(), ErrorType.BAD_REQUEST));
     }
 }

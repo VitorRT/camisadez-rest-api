@@ -1,0 +1,14 @@
+package br.com.camisadez.rest.api.dto.day;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.UUID;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class DayRelationShip {
+    private UUID id;
+}

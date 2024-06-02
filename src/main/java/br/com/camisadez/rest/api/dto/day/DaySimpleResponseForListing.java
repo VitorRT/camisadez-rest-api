@@ -1,4 +1,4 @@
-package br.com.camisadez.rest.api.dto.task;
+package br.com.camisadez.rest.api.dto.day;
 
 import br.com.camisadez.rest.api.dto.template.TemplateRelationShipResponse;
 import br.com.camisadez.rest.api.entity.TemplateEntity;
@@ -7,11 +7,11 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class TaskSimpleResponseForListing {
+public class DaySimpleResponseForListing {
     private TemplateRelationShipResponse templateParent;
-    private List<TaskSimpleResponse> tasks;
+    private List<DaySimpleResponse> days;
 
-    public TaskSimpleResponseForListing(TemplateEntity templateEntity) {
+    public DaySimpleResponseForListing(TemplateEntity templateEntity) {
         this.templateParent = new TemplateRelationShipResponse(templateEntity.getId(), templateEntity.getName());
     }
 }

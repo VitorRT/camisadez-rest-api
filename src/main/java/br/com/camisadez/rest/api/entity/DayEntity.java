@@ -12,8 +12,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -22,9 +22,9 @@ import java.util.UUID;
  * Essa classe entidade representa uma tarefa.
  * */
 @Entity
-@Table(name="tb_tasks")
+@Table(name="tb_days")
 @Data
-public class TaskEntity {
+public class DayEntity {
     /**
      * Identificadores
      * */
@@ -36,24 +36,18 @@ public class TaskEntity {
     @JoinColumn(name="fk_template_parent", nullable = false)
     private TemplateEntity templateParent;
 
+    @OneToMany(mappedBy="taskParent", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+    private Set<TodoTaskEntity> todoChildrens;
+    
     /**
      * Colunas.
      * */
-    @Column(name="task_name", nullable = false)
-    private String taskName;
+    @Column(name="day_name", nullable = false)
+    private String dayName;
 
-    @Column(name="task_desc")
+    @Column(name="day_desc")
     @Lob
-    private String taskDesc;
-
-    /**
-     * Datas
-     * */
-    @Column(name="start_task", nullable = false)
-    private LocalDateTime startTask;
-
-    @Column(name="end_task", nullable = false)
-    private LocalDateTime endTask;
+    private String dayDesc;
 
     /**
      * A data do dia é o dia na qual a tarefa será executada. o start date e o end date devem estar dentro dessa data.
@@ -76,7 +70,7 @@ public class TaskEntity {
     /**
      * Construtor da classe <code>TaskEntity</code>.
      * */
-    public TaskEntity() {
+    public DayEntity() {
 
     }
 

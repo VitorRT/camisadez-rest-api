@@ -6,10 +6,10 @@
  * Todos os direitos reservados.
  * */
 
-package br.com.camisadez.rest.api.dto.task;
+package br.com.camisadez.rest.api.dto.day;
 
 import br.com.camisadez.rest.api.dto.template.TemplateRelationShipResponse;
-import br.com.camisadez.rest.api.entity.TaskEntity;
+import br.com.camisadez.rest.api.entity.DayEntity;
 import br.com.camisadez.rest.api.entity.TemplateEntity;
 import br.com.camisadez.rest.api.utils.DateUtils;
 import lombok.Data;
@@ -22,10 +22,10 @@ import java.util.UUID;
  * Essa classe representa um payload DTO de uma task usado para listagens
  */
 @Data
-public class TaskFullResponse {
+public class DayFullResponse {
     private UUID id;
-    private String taskName;
-    private String taskDesc;
+    private String dayName;
+    private String dayDesc;
     private String createdAt;
     private String includedAt;
     private Double progress;
@@ -36,10 +36,10 @@ public class TaskFullResponse {
      *
      * @param entity
      * */
-    public TaskFullResponse(TaskEntity entity, TemplateEntity templateParentEntity) {
+    public DayFullResponse(DayEntity entity, TemplateEntity templateParentEntity) {
         this.id = entity.getId();
-        this.taskName = entity.getTaskName();
-        this.taskDesc = entity.getTaskDesc();
+        this.dayName = entity.getDayName();
+        this.dayDesc = entity.getDayDesc();
         this.createdAt = DateUtils.formatDateAndTime(entity.getDtCreatedAt(), entity.getTmCreatedAt());
         this.includedAt = DateUtils.formatDateAndTime(entity.getDtIncludedAt(), entity.getTmIncludedAt());
         this.progress = 50.0;

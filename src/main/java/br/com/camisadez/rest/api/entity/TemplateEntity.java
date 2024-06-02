@@ -33,7 +33,7 @@ public class TemplateEntity {
     private UUID id;
 
     @OneToMany(mappedBy="templateParent", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<TaskEntity> tasks;
+    private Set<DayEntity> tasks;
 
     /**
      * Colunas.
